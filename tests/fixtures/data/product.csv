@@ -1,0 +1,5 @@
+product_id,sku,type,created_at
+1,SKU1,simple,2010-01-01
+2,SKU2,simple,2011-01-01
+3,SKU3,simple,2012-01-01
+4,SKU4,simple,2013-01-01
