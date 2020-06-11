@@ -42,3 +42,18 @@ CREATE TABLE `product_text` (
     PRIMARY KEY (`value_id`),
     UNIQUE KEY (`product_id`, `attribute_id`)
 ) ENGINE=InnoDB;
+
+DELIMITER //
+
+CREATE PROCEDURE all_product_data(
+    IN filter_sku VARCHAR(255)
+)
+BEGIN
+    SELECT sku,type FROM product WHERE sku LIKE filter_sku;
+    SELECT p.sku,pd.attribute_id,pd.value FROM product p INNER JOIN product_int pd ON pd.product_id = p.product_id WHERE p.sku LIKE filter_sku;
+    SELECT p.sku,pd.attribute_id,pd.value FROM product p INNER JOIN product_decimal pd ON pd.product_id = p.product_id WHERE p.sku LIKE filter_sku;
+    SELECT p.sku,pd.attribute_id,pd.value FROM product p INNER JOIN product_varchar pd ON pd.product_id = p.product_id WHERE p.sku LIKE filter_sku;
+    SELECT p.sku,pd.attribute_id,pd.value FROM product p INNER JOIN product_text pd ON pd.product_id = p.product_id WHERE p.sku LIKE filter_sku;
+END //
+
+DELIMITER ;
