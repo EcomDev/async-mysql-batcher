@@ -5,5 +5,5 @@ namespace EcomDev\AsyncMySQLBatcher;
 
 interface Runtime
 {
-    public function run(): void;
+    public function run(Task $task): void;
 }
