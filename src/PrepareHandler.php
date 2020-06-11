@@ -6,7 +6,7 @@ namespace EcomDev\AsyncMySQLBatcher;
 
 interface PrepareHandler
 {
-    public function statementIsReady(string $statementId, Statement $statement): void;
+    public function statementPrepared(StatementExecutor $statement): void;
 
-    public function statementIsInvalid(string $statementId, \Throwable $reason): void;
+    public function statementFailed(\Throwable $reason): void;
 }
